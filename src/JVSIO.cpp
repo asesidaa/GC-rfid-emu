@@ -412,7 +412,7 @@ void JVSIO::sendStatus() {
 
 	// Spec requires 100usec interval at minimum between each packet.
 	// But response should be sent within 1msec from the last byte received.
-	delayMicroseconds(100);
+	// delayMicroseconds(100);
 
 	// Address is just assigned.
 	// This timing to negate the sense signal is subtle. The spec expects this
