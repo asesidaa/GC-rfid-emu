@@ -236,7 +236,13 @@ uint8_t* JVSIO::getNextCommand(uint8_t* len, uint8_t* node) {
 			rx_read_ptr_ += command_size;
 			return &rx_data_[rx_read_ptr_ - command_size];
 		default:
+#ifdef ARDUINO_ARCH_ESP32
 			Serial.printf("Unknown command %d\n", (uint8_t)cmd);
+#else
+			Serial.print("Unknown command ");
+			Serial.print((uint8_t)cmd);
+			Serial.println();
+#endif
 			sendUnknownCommandStatus();
 			break;
 		}
