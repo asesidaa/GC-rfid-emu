@@ -2,9 +2,9 @@
 
 ## Hardware
 
-- Esp32-S3 (others are probably also possible, but haven't test)
+- Esp32-S3 (others are probably also possible, but haven't test) or Arduino Pro Micro
 - PN532
-- USB to Serial adapter supporting hardware flow control
+- USB to Serial adapter supporting hardware flow control (has CTS line)
 
 ## Wiring
 
@@ -30,6 +30,27 @@ Communicating through SPI
 | 42    | RX     |
 | GND   | GND    |
 
+### Arduino Pro Micro and PN532
+Communicating through SPI
+
+| Arduino | PN532   |
+| ------- | ------- |
+| 7       | NSS     |
+| 16      | MOSI    |
+| 15      | SCK     |
+| 14      | MISO    |
+| 3.3v/5v | 3.3v/5v |
+| GND     | GND     |
+
+### Esp32 and Serial
+
+|Arduino| Serial |
+| ----- | ------ |
+| 2     | CTS    |
+| RX    | TX     |
+| TX    | RX     |
+| GND   | GND    |
+
 ## Game
 
-Patch the game to use the COM port you specify, do not use COM2
+Patch the game to use the COM port you specify, do not use COM2 (COM2 is hooked by jconfig)
